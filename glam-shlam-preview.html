@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glam Shlam — Pinterest-Inspired Finds, Everything Under Rs. 200</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #fbf1ec;
+    --blush: #f3cdd1;
+    --rose:  #c97b86;
+    --plum:  #5b2a38;
+    --ink:   #2e2321;
+    --tan:   #e8dcd2;
+    --display: 'Fraunces', serif;
+    --sans: 'Sora', sans-serif;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  :focus-visible{
+    outline: 2px solid var(--plum);
+    outline-offset: 3px;
+  }
+
+  img, svg{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .nav__links{
+    display:flex;
+    gap: 1.75rem;
+    font-size: 0.9rem;
+  }
+
+  .nav__links a:hover{ color: var(--rose); }
+
+  .nav__word{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .nav__cta{
+    background: var(--plum);
+    color: var(--cream);
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 720px){
+    .nav__links{ display:none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    text-align:center;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .hero h1{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.3rem, 6vw, 4rem);
+    line-height: 1.1;
+    max-width: 15ch;
+    margin-inline: auto;
+  }
+
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rose);
+  }
+
+  .hero p{
+    margin-top: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: #5a4c47;
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+
+  .hero__actions{
+    margin-top: 2rem;
+    display:flex;
+    gap: 1.25rem;
+    justify-content:center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    background: var(--plum);
+    color: var(--cream);
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display:inline-block;
+    transition: transform 0.15s ease;
+  }
+
+  .btn:hover{ transform: translateY(-2px); }
+
+  .link-quiet{
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--rose);
+    padding-bottom: 2px;
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee-wrap{
+    background: var(--rose);
+    color: var(--cream);
+    overflow: hidden;
+    padding: 0.85rem 0;
+  }
+
+  .marquee{
+    display:flex;
+    width: max-content;
+    animation: scroll 26s linear infinite;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+
+  .marquee span{
+    padding-inline: 1rem;
+    white-space: nowrap;
+  }
+
+  @keyframes scroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .marquee{ animation: none; flex-wrap: wrap; }
+  }
+
+  /* ---------- masonry shop grid ---------- */
+  .shop{
+    padding: clamp(3rem, 7vw, 5rem) 0;
+  }
+
+  .shop__head{
+    text-align:center;
+    margin-bottom: 2.5rem;
+  }
+
+  .shop__head h2{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+  }
+
+  .shop__head p{
+    color: #5a4c47;
+    margin-top: 0.4rem;
+  }
+
+  .masonry{
+    column-count: 3;
+    column-gap: 1.25rem;
+  }
+
+  @media (max-width: 880px){ .masonry{ column-count: 2; } }
+  @media (max-width: 540px){ .masonry{ column-count: 1; } }
+
+  .card{
+    break-inside: avoid;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--tan);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .card:nth-child(2n) .card__art{ border-radius: 18px 18px 0 0; }
+  .card:nth-child(3n) .card__art{ border-radius: 4px 4px 0 0; }
+
+  .card__art{
+    aspect-ratio: var(--r, 1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--plum);
+  }
+
+  .card__art svg{ width: 34%; height: 34%; }
+
+  .card__body{
+    padding: 0.9rem 1.1rem 1.1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap: 0.5rem;
+  }
+
+  .card__name{ font-size: 0.92rem; }
+
+  .card__price{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--plum);
+    white-space: nowrap;
+  }
+
+  /* ---------- statement / split ---------- */
+  .statement{
+    background: #fff;
+    padding: clamp(3rem, 7vw, 5rem) 0;
+  }
+
+  .statement__inner{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items:center;
+  }
+
+  @media (max-width: 820px){
+    .statement__inner{ grid-template-columns: 1fr; }
+  }
+
+  .statement h2{
+    font-family: var(--display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    color: var(--plum);
+  }
+
+  .statement p{
+    margin-top: 1rem;
+    max-width: 42ch;
+    color: #5a4c47;
+  }
+
+  .statement__art{
+    background: var(--blush);
+    border-radius: 28px;
+    aspect-ratio: 4/3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--plum);
+  }
+
+  .statement__art svg{ width: 30%; }
+
+  /* ---------- dms ---------- */
+  .dms{
+    padding: clamp(3rem, 7vw, 5rem) 0;
+  }
+
+  .dms__head{
+    text-align:center;
+    margin-bottom: 2.25rem;
+  }
+
+  .dms__head h2{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+  }
+
+  .bubbles{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 820px){ .bubbles{ grid-template-columns: 1fr; } }
+
+  .bubble{
+    background: var(--tan);
+    border-radius: 18px 18px 18px 4px;
+    padding: 1.1rem 1.3rem;
+    font-size: 0.95rem;
+  }
+
+  .bubble small{
+    display:block;
+    margin-top: 0.6rem;
+    color: #7a6a63;
+    font-size: 0.8rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background: var(--plum);
+    color: var(--cream);
+    padding: clamp(2.5rem, 6vw, 4rem) 0 2rem;
+    text-align:center;
+  }
+
+  footer h3{
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  footer p{
+    margin-top: 0.6rem;
+    color: var(--blush);
+    max-width: 32ch;
+    margin-inline: auto;
+  }
+
+  footer .btn{
+    background: var(--cream);
+    color: var(--plum);
+    margin-top: 1.5rem;
+  }
+
+  footer .credit{
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    color: #caa5ad;
+  }
+</style>
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#shop" class="nav__links"><span>shop</span></a>
+    <div class="nav__word">glam shlam</div>
+    <a href="#" class="nav__cta">order on whatsapp</a>
+  </header>
+
+  <section class="hero">
+    <h1>pinterest boards, but you can <em>actually</em> buy it.</h1>
+    <p>makeup, skincare, jewelry &amp; accessories — everything under Rs. 200.</p>
+    <div class="hero__actions">
+      <a href="#" class="btn">order on whatsapp</a>
+      <a href="#shop" class="link-quiet">see what's new</a>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee">
+      <span>makeup ♡ skincare ♡ jewelry ♡ accessories ♡ budget beauty pakistan ♡ dm to order ♡</span>
+      <span>makeup ♡ skincare ♡ jewelry ♡ accessories ♡ budget beauty pakistan ♡ dm to order ♡</span>
+    </div>
+  </div>
+
+  <section class="shop wrap" id="shop">
+    <div class="shop__head">
+      <h2>currently obsessed with</h2>
+      <p>restocked weekly · all under Rs. 200</p>
+    </div>
+
+    <div class="masonry">
+
+      <div class="card">
+        <div class="card__art" style="--r:1; background:var(--blush)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="30" r="9"/>
+            <path d="M24 21 L20 12 L28 12 Z"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <span class="card__name">rose quartz ring</span>
+          <span class="card__price">Rs. 180</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__art" style="--r:1.3; background:var(--tan)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 24 L8 14 Q4 24 8 34 Z"/>
+            <path d="M24 24 L40 14 Q44 24 40 34 Z"/>
+            <circle cx="24" cy="24" r="2.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <span class="card__name">satin bow clip</span>
+          <span class="card__price">Rs. 120</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__art" style="--r:0.85; background:var(--rose); color:var(--cream)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="18" y="6" width="12" height="13" rx="2"/>
+            <path d="M18 19 L16 39 Q24 43 32 39 L30 19 Z"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <span class="card__name">tinted lip oil</span>
+          <span class="card__price">Rs. 150</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__art" style="--r:1.15; background:var(--tan)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 10 Q24 34 38 10"/>
+            <circle cx="24" cy="31" r="4"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <span class="card__name">layered chain necklace</span>
+          <span class="card__price">Rs. 200</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__art" style="--r:1; background:var(--blush)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="16" y="16" width="16" height="26" rx="3"/>
+            <rect x="20" y="8" width="8" height="8" rx="1"/>
+            <path d="M31 6 L37 2 M33 9 L40 6 M31 12 L38 11"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <span class="card__name">glass skin face mist</span>
+          <span class="card__price">Rs. 180</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__art" style="--r:1.35; background:var(--plum); color:var(--cream)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 24 L40 24 M12 24 L12 15 M20 24 L20 11 M28 24 L28 11 M36 24 L36 15"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <span class="card__name">pearl claw clip</span>
+          <span class="card__price">Rs. 150</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap statement__inner">
+      <div>
+        <h2>cute things, just for you.</h2>
+        <p>budget doesn't mean basic. every pick is picked the way you'd curate your own pinterest board — small, pretty, a little indulgent — and priced so you never have to think twice. based in karachi, delivered to your door, ordered straight from your dms.</p>
+      </div>
+      <div class="statement__art">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 26 L8 15 Q3 26 8 37 Z"/>
+          <path d="M24 26 L40 15 Q45 26 40 37 Z"/>
+          <circle cx="24" cy="26" r="3" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="dms wrap">
+    <div class="dms__head">
+      <h2>in our dms 💌</h2>
+    </div>
+    <div class="bubbles">
+      <div class="bubble">"the clips came exactly like the pic, obsessed"<small>placeholder — swap for a real screenshot</small></div>
+      <div class="bubble">"ordered 3 things and they all sold out the same day??"<small>placeholder — swap for a real screenshot</small></div>
+      <div class="bubble">"cheapest thing in my order but doesn't look cheap at all"<small>placeholder — swap for a real screenshot</small></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <h3>glam shlam</h3>
+      <p>pinterest-inspired finds, cute things just for you.</p>
+      <a href="#" class="btn">order on whatsapp</a>
+      <p class="credit">concept &amp; build — swap in your name / portfolio link here</p>
+    </div>
+  </footer>
+
+</body>
+</html>
